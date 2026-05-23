@@ -20,7 +20,7 @@ public class PoliceOfficer {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
 
