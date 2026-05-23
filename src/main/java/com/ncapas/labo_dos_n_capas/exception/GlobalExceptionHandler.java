@@ -65,4 +65,30 @@ public class GlobalExceptionHandler {
                 .build()
                 .buildResponse();
     }
+
+    @ExceptionHandler(PoliceAlreadyExistsException.class)
+    public ResponseEntity<GenericResponse> handlePoliceAlreadyExistsException(PoliceAlreadyExistsException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                java.time.LocalDateTime.now(),
+                ex.getMessage()
+        );
+        return GenericResponse.builder()
+                .data(errorResponse)
+                .status(HttpStatus.CONFLICT)
+                .build()
+                .buildResponse();
+    }
+
+    @ExceptionHandler(PoliceNotFoundException.class)
+    public ResponseEntity<GenericResponse> handlePoliceNotFoundException(PoliceNotFoundException ex) {
+        CustomErrorResponse errorResponse = new CustomErrorResponse(
+                java.time.LocalDateTime.now(),
+                ex.getMessage()
+        );
+        return GenericResponse.builder()
+                .data(errorResponse)
+                .status(HttpStatus.NOT_FOUND)
+                .build()
+                .buildResponse();
+    }
 }

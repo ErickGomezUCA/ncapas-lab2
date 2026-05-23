@@ -5,7 +5,6 @@ import com.ncapas.labo_dos_n_capas.domain.dto.response.PersonResponseDTO;
 import com.ncapas.labo_dos_n_capas.domain.entity.Person;
 import com.ncapas.labo_dos_n_capas.domain.entity.location.Address;
 import com.ncapas.labo_dos_n_capas.exception.PersonAlreadyExistsException;
-import com.ncapas.labo_dos_n_capas.exception.PersonNotFoundByDUIException;
 import com.ncapas.labo_dos_n_capas.exception.PersonNotFoundException;
 import com.ncapas.labo_dos_n_capas.repository.PersonRepository;
 import com.ncapas.labo_dos_n_capas.service.PersonService;
@@ -51,7 +50,7 @@ public class PersonServiceImpl implements PersonService {
     public PersonResponseDTO getPersonByDui(String dui) {
         Person person = personRepository.findByDui(dui);
         if (person == null) {
-            throw new PersonNotFoundByDUIException(dui);
+            throw new PersonNotFoundException(dui);
         }
         return convertToResponseDTO(person);
     }
