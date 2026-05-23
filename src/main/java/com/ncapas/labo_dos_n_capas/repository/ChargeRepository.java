@@ -5,11 +5,14 @@ import com.ncapas.labo_dos_n_capas.domain.entity.Person;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
+@Repository
 public interface ChargeRepository extends JpaRepository<Charge, UUID> {
+    Charge findByAccuserAndAccused(Person accuser, Person accused);
 
     List<Charge> findByAccused_Id(UUID accusedId);
 

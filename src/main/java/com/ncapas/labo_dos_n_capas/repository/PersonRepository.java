@@ -7,6 +7,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface PersonRepository extends JpaRepository<Person, UUID> {
-    Optional<Person> findByDui(String dui);
+    Person findByDui(String dui);
     Boolean existsByDui(String dui);
 }

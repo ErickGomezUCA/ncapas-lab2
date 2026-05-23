@@ -28,7 +28,7 @@ public class PoliceStation {
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    @ManyToOne
-    @JoinColumn(name = "director_id", nullable = false)
-    private Person director;
+    @OneToOne
+    @JoinColumn(name = "director_id")
+    private PoliceOfficer director;
 }
